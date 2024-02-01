@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class FrequencyCounter {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter the size of the array:");
+        int size = input.nextInt();
+        
+        int[] a = new int[size];
+
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < size; i++) {
+            a[i] = input.nextInt();
+        }
+
+        int[] t = new int[a.length];
+        int visited = -1;
+
+        for (int i = 0; i < a.length; i++) {
+            int count = 1;
+
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[i] == a[j]) {
+                    count++;
+                    t[j] = visited;
+                }
+            }
+
+            if (t[i] != visited)
+                t[i] = count;
+        }
+
+        System.out.println("Element frequencies:");
+        for (int i = 0; i < a.length; i++) {
+            if (t[i] != visited)
+                System.out.println(a[i] + ": " + t[i]);
+        }
+    }
+}
