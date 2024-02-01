@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class SumOfDigitsWithoutFunction {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter N value: ");
+        int n = scanner.nextInt();
+
+        System.out.print("Enter " + n + " digit number: ");
+        int number = scanner.nextInt();
+
+        int sum = 0;
+
+        // Calculate the sum of digits
+        while (number > 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+
+        // Ensure the sum is a single digit
+        while (sum >= 10) {
+            int tempSum = 0;
+            while (sum > 0) {
+                tempSum += sum % 10;
+                sum /= 10;
+            }
+            sum = tempSum;
+        }
+
+        System.out.println("Sum of " + n + " digit number: " + sum);
+
+        scanner.close();
+    }
+}
